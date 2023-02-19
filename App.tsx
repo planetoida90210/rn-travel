@@ -1,11 +1,25 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./screens/HomeScreen";
+
+export type StackParamList = {
+  Home: undefined;
+};
+
+const Stack = createNativeStackNavigator<StackParamList>();
 
 export default function App() {
   return (
-    <SafeAreaView>
-      <Text className="text-red-500">Open up App.tsx to start working on yo app!</Text>
-      <StatusBar />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Home"
+          component={HomeScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
