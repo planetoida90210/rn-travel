@@ -1,10 +1,11 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { Image, SafeAreaView, Text, View } from "react-native";
 import React from "react";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 
 //external imports
 import { StackParamList } from "../App";
+import { HeroImage } from "../assets";
 
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Home">;
 
@@ -27,6 +28,13 @@ const HomeScreen = () => {
         <Text className="text-[#3C6072] text-base">
           Find best spot for your trips, suprising Your friends with knowledge about new cities!
         </Text>
+      </View>
+      {/* Third section */}
+      <View className="w-[350px] h-[350px] bg-[#00BCC9] rounded-full absolute bottom-36 -right-36"></View>
+      <View className="w-[380px] h-[380px] bg-[#E99265] rounded-full absolute -bottom-28 -left-36"></View>
+      {/* Image container */}
+      <View className="flex-1 relative items-center justify-center">
+        <Image source={HeroImage} className="w-full h-full object-cover mt-20" />
       </View>
     </SafeAreaView>
   );
