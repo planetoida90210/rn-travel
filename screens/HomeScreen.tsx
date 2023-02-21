@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, Text, View } from "react-native";
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
@@ -35,6 +35,13 @@ const HomeScreen = () => {
       {/* Image container */}
       <View className="flex-1 relative items-center justify-center">
         <Image source={HeroImage} className="w-full h-full object-cover mt-20" />
+        <View className="absolute bottom-10 w-24 h-24 border-l-2 border-r-2 border-t-4 border-[#00BCC9] rounded-full items-center justify-center">
+          <TouchableOpacity>
+            <View className="w-20 h-20 items-center justify-center rounded-full bg-[#00BCC9]">
+              <Text className="text-gray-50 text-[36px] font-semibold">Go</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
