@@ -26,10 +26,12 @@ const Discover = () => {
       </View>
       <View className="flex-row items-center bg-white mx-4 rounded-xl py-1 px-4 shadow-lg mt-4">
         <GooglePlacesAutocomplete
+          GooglePlacesDetailsQuery={{ fields: "geometry" }}
           placeholder="Search"
+          fetchDetails={true}
           onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
-            console.log(data, details);
+            console.log(details?.geometry?.viewport);
           }}
           query={{
             key: GOOGLE_PLACES_API_KEY!,
