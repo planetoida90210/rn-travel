@@ -1,13 +1,14 @@
-import { View, Text, SafeAreaView, Image, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
+import { GOOGLE_PLACES_API_KEY } from "@env";
 
 //external imports
+import { FontAwesome } from "@expo/vector-icons";
 import { StackParamList } from "../App";
 import { Attractions, Avatar, Hotels, Restaurants } from "../assets";
-import { GOOGLE_PLACES_API_KEY } from "@env";
 import MenuContainer from "../components/MenuContainer";
 
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover">;
@@ -60,6 +61,15 @@ const Discover = () => {
             type={type}
             setType={setType}
           />
+        </View>
+        <View>
+          <View className="flex-row items-center justify-between px-4 mt-8">
+            <Text className="text-[#2C7379] text-[28px] font-bold">Top Tips</Text>
+            <TouchableOpacity className="flex-row items-center justify-center space-x-2">
+              <Text className="text-[#A0C4C7] text-[20px] font-bold">Explore</Text>
+              <FontAwesome name="long-arrow-right" size={24} color="#A0C4C7" />
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
