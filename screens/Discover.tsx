@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 
 //external imports
 import { StackParamList } from "../App";
-import { Avatar, Hotels } from "../assets";
+import { Attractions, Avatar, Hotels, Restaurants } from "../assets";
 import { GOOGLE_PLACES_API_KEY } from "@env";
 import MenuContainer from "../components/MenuContainer";
 
@@ -14,7 +14,7 @@ export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover
 
 const Discover = () => {
   // const navigation = useNavigation<NavigationProp>();
-  const [type, setType] = useState("restaurants");
+  const [type, setType] = useState<string>("");
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -44,8 +44,22 @@ const Discover = () => {
       </View>
       {/* Menu container */}
       <ScrollView>
-        <View className="flex-row items-center justify-center px-8 mt-8">
-          <MenuContainer key={"hotel"} title="Hotels" imgSrc={Hotels} type={type} setType={setType} />
+        <View className="flex-row items-center justify-between px-8 mt-8">
+          <MenuContainer key={"hotel"} title="hotels" imgSrc={Hotels} type={type} setType={setType} />
+          <MenuContainer
+            key={"attractions"}
+            title="attractions"
+            imgSrc={Attractions}
+            type={type}
+            setType={setType}
+          />
+          <MenuContainer
+            key={"restaurants"}
+            title="restaurants"
+            imgSrc={Restaurants}
+            type={type}
+            setType={setType}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
