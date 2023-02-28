@@ -1,18 +1,21 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
-import React from "react";
+import { View, Text, SafeAreaView, Image, ScrollView } from "react-native";
+import React, { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 
 //external imports
 import { StackParamList } from "../App";
-import { Avatar } from "../assets";
+import { Avatar, Hotels } from "../assets";
 import { GOOGLE_PLACES_API_KEY } from "@env";
+import MenuContainer from "../components/MenuContainer";
 
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover">;
 
 const Discover = () => {
-  const navigation = useNavigation<NavigationProp>();
+  // const navigation = useNavigation<NavigationProp>();
+  const [type, setType] = useState("restaurants");
+
   return (
     <SafeAreaView className="flex-1 bg-white relative">
       <View className="flex-row items-center justify-between px-8">
@@ -39,6 +42,12 @@ const Discover = () => {
           }}
         />
       </View>
+      {/* Menu container */}
+      <ScrollView>
+        <View className="flex-row items-center justify-center px-8 mt-8">
+          <MenuContainer key={"hotel"} title="Hotels" imgSrc={Hotels} type={type} setType={setType} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
