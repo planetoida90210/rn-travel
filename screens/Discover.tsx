@@ -10,6 +10,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { StackParamList } from "../App";
 import { Attractions, Avatar, Hotels, Restaurants } from "../assets";
 import MenuContainer from "../components/MenuContainer";
+import ItemCardContainer from "../components/ItemCardContainer";
 
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover">;
 
@@ -69,6 +70,20 @@ const Discover = () => {
               <Text className="text-[#A0C4C7] text-[20px] font-bold">Explore</Text>
               <FontAwesome name="long-arrow-right" size={24} color="#A0C4C7" />
             </TouchableOpacity>
+          </View>
+          <View className="px-4 mt-8 flex-row items-center justify-evenly">
+            <ItemCardContainer
+              key={101}
+              imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
+              title="SteakHouse"
+              location="Warsaw"
+            />
+            <ItemCardContainer
+              key={102}
+              imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
+              title="ShrimpHouse"
+              location="Warsaw"
+            />
           </View>
         </View>
       </ScrollView>
