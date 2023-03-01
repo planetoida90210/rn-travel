@@ -1,4 +1,12 @@
-import { View, Text, SafeAreaView, Image, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -16,7 +24,8 @@ export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover
 
 const Discover = () => {
   // const navigation = useNavigation<NavigationProp>();
-  const [type, setType] = useState<string>("");
+  const [type, setType] = useState<string>("restaurants");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -45,48 +54,54 @@ const Discover = () => {
         />
       </View>
       {/* Menu container */}
-      <ScrollView>
-        <View className="flex-row items-center justify-between px-8 mt-8">
-          <MenuContainer key={"hotel"} title="hotels" imgSrc={Hotels} type={type} setType={setType} />
-          <MenuContainer
-            key={"attractions"}
-            title="attractions"
-            imgSrc={Attractions}
-            type={type}
-            setType={setType}
-          />
-          <MenuContainer
-            key={"restaurants"}
-            title="restaurants"
-            imgSrc={Restaurants}
-            type={type}
-            setType={setType}
-          />
+      {isLoading ? (
+        <View className="flex-1 items-center justify-center">
+          <ActivityIndicator size="large" color="#0B646B" />
         </View>
-        <View>
-          <View className="flex-row items-center justify-between px-4 mt-8">
-            <Text className="text-[#2C7379] text-[28px] font-bold">Top Tips</Text>
-            <TouchableOpacity className="flex-row items-center justify-center space-x-2">
-              <Text className="text-[#A0C4C7] text-[20px] font-bold">Explore</Text>
-              <FontAwesome name="long-arrow-right" size={24} color="#A0C4C7" />
-            </TouchableOpacity>
-          </View>
-          <View className="px-4 mt-8 flex-row items-center justify-evenly">
-            <ItemCardContainer
-              key={101}
-              imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
-              title="SteakHouse"
-              location="Warsaw"
+      ) : (
+        <ScrollView>
+          <View className="flex-row items-center justify-between px-8 mt-8">
+            <MenuContainer key={"hotel"} title="hotels" imgSrc={Hotels} type={type} setType={setType} />
+            <MenuContainer
+              key={"attractions"}
+              title="attractions"
+              imgSrc={Attractions}
+              type={type}
+              setType={setType}
             />
-            <ItemCardContainer
-              key={102}
-              imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
-              title="ShrimpHouse"
-              location="Warsaw"
+            <MenuContainer
+              key={"restaurants"}
+              title="restaurants"
+              imgSrc={Restaurants}
+              type={type}
+              setType={setType}
             />
           </View>
-        </View>
-      </ScrollView>
+          <View>
+            <View className="flex-row items-center justify-between px-4 mt-8">
+              <Text className="text-[#2C7379] text-[28px] font-bold">Top Tips</Text>
+              <TouchableOpacity className="flex-row items-center justify-center space-x-2">
+                <Text className="text-[#A0C4C7] text-[20px] font-bold">Explore</Text>
+                <FontAwesome name="long-arrow-right" size={24} color="#A0C4C7" />
+              </TouchableOpacity>
+            </View>
+            <View className="px-4 mt-8 flex-row items-center justify-evenly">
+              <ItemCardContainer
+                key={101}
+                imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
+                title="SteakHouse"
+                location="Warsaw"
+              />
+              <ItemCardContainer
+                key={102}
+                imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
+                title="ShrimpHouse"
+                location="Warsaw"
+              />
+            </View>
+          </View>
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 };
