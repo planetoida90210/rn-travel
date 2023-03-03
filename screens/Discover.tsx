@@ -16,7 +16,7 @@ import { GOOGLE_PLACES_API_KEY } from "@env";
 //external imports
 import { FontAwesome } from "@expo/vector-icons";
 import { StackParamList } from "../App";
-import { Attractions, Avatar, Hotels, Restaurants } from "../assets";
+import { Attractions, Avatar, Hotels, NotFound, Restaurants } from "../assets";
 import MenuContainer from "../components/MenuContainer";
 import ItemCardContainer from "../components/ItemCardContainer";
 
@@ -26,6 +26,7 @@ const Discover = () => {
   // const navigation = useNavigation<NavigationProp>();
   const [type, setType] = useState<string>("restaurants");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [mainData, setMainData] = useState([]);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -86,18 +87,30 @@ const Discover = () => {
               </TouchableOpacity>
             </View>
             <View className="px-4 mt-8 flex-row items-center justify-evenly">
-              <ItemCardContainer
-                key={101}
-                imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
-                title="SteakHouse"
-                location="Warsaw"
-              />
-              <ItemCardContainer
-                key={102}
-                imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
-                title="ShrimpHouse"
-                location="Warsaw"
-              />
+              {mainData?.length > 0 ? (
+                <>
+                  {" "}
+                  <ItemCardContainer
+                    key={101}
+                    imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
+                    title="SteakHouse"
+                    location="Warsaw"
+                  />
+                  <ItemCardContainer
+                    key={102}
+                    imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
+                    title="ShrimpHouse"
+                    location="Warsaw"
+                  />
+                </>
+              ) : (
+                <>
+                  <View className="w-full h-full items-center space-y-8 justify-center">
+                    <Image source={NotFound} className="w-32 h-32 object-cover" />
+                    <Text className="text-2xl text-[#428288] font-semibold">Oops... No Data Found</Text>
+                  </View>
+                </>
+              )}
             </View>
           </View>
         </ScrollView>
