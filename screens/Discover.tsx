@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import React, { useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
@@ -19,14 +19,23 @@ import { StackParamList } from "../App";
 import { Attractions, Avatar, Hotels, NotFound, Restaurants } from "../assets";
 import MenuContainer from "../components/MenuContainer";
 import ItemCardContainer from "../components/ItemCardContainer";
+import { getPlacesData } from "../api";
 
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover">;
 
 const Discover = () => {
   // const navigation = useNavigation<NavigationProp>();
   const [type, setType] = useState<string>("restaurants");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [mainData, setMainData] = useState([]);
+  const [isLoading, setIsLoading] = useState<SetStateAction<boolean>>(false);
+  const [mainData, setMainData] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getPlacesData().then((data) => {
+      setMainData(data);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -86,22 +95,21 @@ const Discover = () => {
                 <FontAwesome name="long-arrow-right" size={24} color="#A0C4C7" />
               </TouchableOpacity>
             </View>
-            <View className="px-4 mt-8 flex-row items-center justify-evenly">
+            <View className="px-4 mt-8 flex-row items-center flex-wrap justify-evenly">
               {mainData?.length > 0 ? (
                 <>
-                  {" "}
-                  <ItemCardContainer
-                    key={101}
-                    imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/14/05/brick-wall-1834784_960_720.jpg"}
-                    title="SteakHouse"
-                    location="Warsaw"
-                  />
-                  <ItemCardContainer
-                    key={102}
-                    imageSrc={"https://cdn.pixabay.com/photo/2016/11/18/22/21/restaurant-1837150_960_720.jpg"}
-                    title="ShrimpHouse"
-                    location="Warsaw"
-                  />
+                  {mainData?.map((data, i) => (
+                    <ItemCardContainer
+                      key={i}
+                      imageSrc={
+                        data?.photo?.images?.medium?.url
+                          ? data?.photo?.images?.medium?.url
+                          : "https://cdn.pixabay.com/photo/2015/10/30/12/22/eat-1014025_1280.jpg"
+                      }
+                      title={data?.name}
+                      location={data?.location_string}
+                    />
+                  ))}
                 </>
               ) : (
                 <>
