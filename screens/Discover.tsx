@@ -24,7 +24,6 @@ import { getPlacesData } from "../api";
 export type NavigationProp = NativeStackNavigationProp<StackParamList, "Discover">;
 
 const Discover = () => {
-  // const navigation = useNavigation<NavigationProp>();
   const [type, setType] = useState<string>("restaurants");
   const [isLoading, setIsLoading] = useState<SetStateAction<boolean>>(false);
   const [mainData, setMainData] = useState<Array<any>>([]);
@@ -108,6 +107,7 @@ const Discover = () => {
                       }
                       title={data?.name}
                       location={data?.location_string}
+                      data={data}
                     />
                   ))}
                 </>
