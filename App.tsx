@@ -3,11 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import Discover from "./screens/Discover";
 import ItemScreen from "./screens/ItemScreen";
+import { Data } from "./types";
 
 export type StackParamList = {
   Home: undefined;
   Discover: undefined;
-  ItemScreen: { data?: string };
+  ItemScreen: { data: [] };
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();

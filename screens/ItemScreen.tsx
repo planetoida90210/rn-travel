@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-const ItemScreen = () => {
+const ItemScreen = ({}) => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>ItemScreen</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
