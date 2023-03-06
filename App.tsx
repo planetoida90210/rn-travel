@@ -8,7 +8,7 @@ import { Data } from "./types";
 export type StackParamList = {
   Home: undefined;
   Discover: undefined;
-  ItemScreen: { data: [] };
+  ItemScreen: { data: Data };
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
