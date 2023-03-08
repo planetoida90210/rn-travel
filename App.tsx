@@ -1,4 +1,4 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
 import Discover from "./screens/Discover";
@@ -8,7 +8,7 @@ import { Data } from "./types";
 export type StackParamList = {
   Home: undefined;
   Discover: undefined;
-  ItemScreen: { data: Data };
+  ItemScreen: { param: Data };
 };
 
 const Stack = createNativeStackNavigator<StackParamList>();
