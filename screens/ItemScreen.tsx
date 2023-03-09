@@ -1,13 +1,16 @@
 import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { StackParamList } from "../App";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { NativeStackNavigationProp, NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 type Props = NativeStackScreenProps<StackParamList, "ItemScreen">;
 
+export type NavigationProp = NativeStackNavigationProp<StackParamList>;
+
 const ItemScreen = ({ route }: Props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp>();
 
   const data = route?.params?.param;
 
@@ -24,8 +27,20 @@ const ItemScreen = ({ route }: Props) => {
             className="w-full h-72 object-cover rounded-2xl"
           />
           <View className="absolute flex-row inset-x-0 top-5 justify-between px-6">
-            <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-white"></TouchableOpacity>
-            <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-[#06B2BE]"></TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Discover")}
+              className="w-10 h-10 rounded-md items-center justify-center bg-white"
+            >
+              <FontAwesome5 name="chevron-left" size={24} color="#06B2BE" />
+            </TouchableOpacity>
+            <TouchableOpacity className="w-10 h-10 rounded-md items-center justify-center bg-[#06B2BE]">
+              <FontAwesome5
+                onPress={() => navigation.navigate("Home")}
+                name="heartbeat"
+                size={24}
+                color="white"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
