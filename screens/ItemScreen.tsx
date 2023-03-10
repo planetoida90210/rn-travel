@@ -95,6 +95,36 @@ const ItemScreen = ({ route }: Props) => {
             </View>
           )}
         </View>
+
+        {data?.description && (
+          <Text className="mt-4 tracking-wide text-[14px] font-semibold text-[#97A6AF]">
+            {data?.description}
+          </Text>
+        )}
+
+        {data?.cuisine && (
+          <View className="flex-row gap-2 items-center justify-start flex-wrap mt-4">
+            {data?.cuisine.map((n) => (
+              <TouchableOpacity key={n.key} className="px-2 py-1 rounded-md bg-emerald-100">
+                <Text>{n.name}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
+        <View className="space-y-2 mt-4 bg-gray-100 rounded-2xl px-4 py-2">
+          {data?.phone && (
+            <View className="items-center flex-row space-x-6">
+              <FontAwesome name="phone" size={20} color="#428288" />
+              <Text className="text-md">{data?.phone}</Text>
+            </View>
+          )}
+          {data?.email && (
+            <View className="items-center flex-row space-x-6">
+              <FontAwesome name="envelope" size={20} color="#428288" />
+              <Text className="text-md">{data?.email}</Text>
+            </View>
+          )}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
