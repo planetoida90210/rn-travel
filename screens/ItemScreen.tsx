@@ -124,6 +124,15 @@ const ItemScreen = ({ route }: Props) => {
               <Text className="text-md">{data?.email}</Text>
             </View>
           )}
+          {data?.address && (
+            <View className="items-center flex-row space-x-6">
+              <FontAwesome name="map-pin" size={20} color="#428288" />
+              <Text className="text-md">{data?.address}</Text>
+            </View>
+          )}
+          <View className="mt-4 px-4 py-4 rounded-lg bg-[#06B2BE] items-center justify-center mb-12">
+            <Text className="text-2xl font-semibold uppercase tracking-wider text-gray-100">Book Now</Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
