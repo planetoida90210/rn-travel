@@ -43,15 +43,15 @@ If u have Expo account just simply scan QR code from top documentation and run o
 
 It works nice on IOS and ANDROID mobiles
 
-[assets/screenhsots/screenshot.png]
+![assets/screenhsots/screenshot.PNG](assets/screenhsots/screenshot.PNG)
 
-[assets/screenhsots/screenshot2.png]
+![assets/screenhsots/screenshot2.PNG](assets/screenhsots/screenshot2.PNG)
 
-[assets/screenhsots/screenshot3.png]
+![assets/screenhsots/screenshot3.PNG](assets/screenhsots/screenshot3.PNG)
 
-[assets/screenhsots/screenshot4.png]
+![assets/screenhsots/screenshot4.PNG](assets/screenhsots/screenshot4.PNG)
 
-[assets/screenhsots/screenshot5.png]
+![assets/screenhsots/screenshot5.PNG](assets/screenhsots/screenshot5.PNG)
 
 
 
