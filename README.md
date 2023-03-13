@@ -43,15 +43,7 @@ If u have Expo account just simply scan QR code from top documentation and run o
 
 It works nice on IOS and ANDROID mobiles
 
-![assets/screenhsots/screenshot.PNG](assets/screenhsots/screenshot.PNG)
-
-![assets/screenhsots/screenshot2.PNG](assets/screenhsots/screenshot2.PNG)
-
-![assets/screenhsots/screenshot3.PNG](assets/screenhsots/screenshot3.PNG)
-
-![assets/screenhsots/screenshot4.PNG](assets/screenhsots/screenshot4.PNG)
-
-![assets/screenhsots/screenshot5.PNG](assets/screenhsots/screenshot5.PNG)
+<img src="https://github.com/planetoida90210/rn-travel/blob/main/assets/screenhsots/screenshot.PNG" width="281" height="500"><img src="https://github.com/planetoida90210/rn-travel/blob/main/assets/screenhsots/screenshot2.PNG" width="281" height="500"><img src="https://github.com/planetoida90210/rn-travel/blob/main/assets/screenhsots/screenshot3.PNG" width="281" height="500"><img src="https://github.com/planetoida90210/rn-travel/blob/main/assets/screenhsots/screenshot4.PNG" width="281" height="500"><img src="https://github.com/planetoida90210/rn-travel/blob/main/assets/screenhsots/screenshot5.PNG" width="281" height="500">
 
 
 
