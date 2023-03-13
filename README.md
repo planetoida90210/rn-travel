@@ -1,6 +1,6 @@
 ## Travel App using React Native with Typescript Expo and Google API by [@planetoida90210](http://github.com/planetoida90210)!
 
-![assets/screenshots/qr_expo.png](assets/screenshots/qr_expo.png)
+![assets/screenhsots/qr_expo.png](assets/screenhsots/qr_expo.png)
 
 ## Hi!
 
