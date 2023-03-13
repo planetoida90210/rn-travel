@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { SetStateAction, useEffect, useState } from "react";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GooglePlacesAutocomplete, Point } from "react-native-google-places-autocomplete";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { GOOGLE_PLACES_API_KEY } from "@env";
@@ -27,14 +27,18 @@ const Discover = () => {
   const [type, setType] = useState<string>("restaurants");
   const [isLoading, setIsLoading] = useState<SetStateAction<boolean>>(false);
   const [mainData, setMainData] = useState<Array<any>>([]);
+  const [bl_lat, setBl_lat] = useState<number | undefined | null>(null);
+  const [bl_lng, setBl_lng] = useState<number | undefined | null>(null);
+  const [tr_lat, setTr_lat] = useState<number | undefined | null>(null);
+  const [tr_lng, setTr_lng] = useState<number | undefined | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
-    getPlacesData().then((data) => {
+    getPlacesData(bl_lat, bl_lng, tr_lat, tr_lng, type).then((data) => {
       setMainData(data);
       setIsLoading(false);
     });
-  }, []);
+  }, [bl_lat, bl_lng, tr_lat, tr_lng, type]);
 
   return (
     <SafeAreaView className="flex-1 bg-white relative">
@@ -55,6 +59,10 @@ const Discover = () => {
           onPress={(data, details = null) => {
             // 'details' is provided when fetchDetails = true
             console.log(details?.geometry?.viewport);
+            setBl_lat(details?.geometry?.viewport?.southwest?.lat);
+            setBl_lng(details?.geometry?.viewport?.southwest?.lng);
+            setTr_lat(details?.geometry?.viewport?.northeast?.lat);
+            setTr_lng(details?.geometry?.viewport?.northeast?.lng);
           }}
           query={{
             key: GOOGLE_PLACES_API_KEY!,
@@ -70,7 +78,7 @@ const Discover = () => {
       ) : (
         <ScrollView>
           <View className="flex-row items-center justify-between px-8 mt-8">
-            <MenuContainer key={"hotel"} title="hotels" imgSrc={Hotels} type={type} setType={setType} />
+            <MenuContainer key={"hotels"} title="hotels" imgSrc={Hotels} type={type} setType={setType} />
             <MenuContainer
               key={"attractions"}
               title="attractions"
